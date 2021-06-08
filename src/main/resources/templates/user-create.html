@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>User Create</title>
+</head>
+<body>
+<div class="container" style="max-width: 800px;width: 1000px;margin-top: 50px">
+    <form th:action="@{/user/new}" th:object="${crUser}" method="post" class="row g-3">
+        <h4>User Create </h4>
+        <div class="col-md-12">
+            <label for="user-firstName-label" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="user-firstName-label" name="firstName">
+            <p th:errors="*{firstName}" style="color: red"></p>
+        </div>
+        <div class="col-md-12">
+            <label for="user-lastName-label" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="user-lastName-label" name="lastName">
+            <p th:errors="*{lastName}" style="color: red"></p>
+        </div>
+        <div class="col-12">
+            <label for="user-username-label" class="form-label">Username</label>
+            <input type="text" class="form-control" id="user-userName-label" name="username">
+            <p th:errors="*{username}" style="color: red"></p>
+        </div>
+        <div class="col-12">
+            <label for="user-password-label" class="form-label">Password</label>
+            <input type="text" class="form-control" id="user-password-label" name="password">
+            <p th:errors="*{password}" style="color: red"></p>
+        </div>
+        <div class="col-md-4">
+            <label>Role</label>
+            <select name="role">
+                <option th:each="rol : ${userRole}" th:text="${rol}" th:value="${rol}"></option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label>Status</label>
+            <select>
+                <option th:each="st : ${usStatus}" th:text="${st}" th:value="${st}" name="status"></option>
+            </select>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-secondary btn-sm">Create</button>
+        </div>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</body>
+</html>
